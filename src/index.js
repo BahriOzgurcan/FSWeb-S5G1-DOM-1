@@ -43,3 +43,82 @@ console.log('Proje açıldı!')
 
 
 /* Kodlar Buradan aşağıya */
+
+// console.log(siteContent["cta"]["h1"]);
+
+const element = document.getElementsByTagName("h1");
+
+// console.log(element);
+// console.log(element[0]);
+
+element[0].textContent = siteContent["cta"]["h1"];
+
+const element2 = document.getElementsByTagName("button");
+
+element2[0].textContent = siteContent["cta"]["button"];
+
+console.log(document.getElementsByTagName("a"));
+
+console.log(document.querySelectorAll('nav a'));
+
+const navList = document.querySelectorAll('nav a');
+
+navList.forEach((nodeAdi, index) => {
+  return nodeAdi.textContent = siteContent["nav"]["nav-item-" + (index + 1)];
+})
+
+//
+
+console.log(document.querySelectorAll(".text-content h4"));
+console.log(document.querySelectorAll(".text-content p"));
+
+const anaIcerikH4 = document.querySelectorAll(".text-content h4")
+const anaIcerikP = document.querySelectorAll(".text-content p")
+
+const arrayH4 = [];
+const arrayP = [];
+Object.keys(siteContent["ana-içerik"]).forEach((elementAdi, index)=>{
+  if(index % 2 === 0){
+    arrayH4.push(siteContent["ana-içerik"][elementAdi]);
+  } else {
+    arrayP.push(siteContent["ana-içerik"][elementAdi])
+  }
+});
+
+console.log(arrayH4);
+console.log(arrayP);
+
+
+anaIcerikH4.forEach((nodeAdi,index) => {
+  return nodeAdi.textContent = arrayH4[index];
+})
+anaIcerikP.forEach((nodeAdi,index) => {
+  return nodeAdi.textContent = arrayP[index];
+})
+
+const iletisim = document.querySelectorAll("section.contact h4, section.contact p");
+
+iletisim[0].textContent = siteContent["iletisim"]["iletişim-h4"];
+iletisim[1].textContent = siteContent["iletisim"]["adres"];
+iletisim[2].textContent = siteContent["iletisim"]["telefon"];
+iletisim[3].textContent = siteContent["iletisim"]["email"];
+
+const copyrightText = document.querySelector("footer a");
+
+copyrightText.textContent = siteContent["footer"]["copyright"];
+
+console.log(copyrightText)
+
+document.querySelector("footer a").setAttribute("class","bold");
+const italik = document.querySelectorAll("nav a");
+for(let i = 0; i<italik.length; i++){
+  italik[i].setAttribute("class", "italic");
+};
+
+console.log(document.querySelectorAll("img"));
+
+const imgRev = document.querySelectorAll("img");
+
+imgRev[0].setAttribute("src", siteContent["images"]["logo-img"]);
+imgRev[1].setAttribute("src", siteContent["images"]["cta-img"]);
+imgRev[2].setAttribute("src", siteContent["images"]["accent-img"]);
